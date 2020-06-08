@@ -16,6 +16,10 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+h1 {
+  padding-top: 10px;
+}
+
 h2 {
   background-color: aquamarine;
   text-align: center;
@@ -23,6 +27,7 @@ h2 {
   border: 2px 2px;
   border-style: outset;
   border-color: blueviolet;
+  border-radius: 10px;
 }
 
 nav {

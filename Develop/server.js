@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const moment = require("moment");
 
-const PORT = process.env.PORT || 2000;
+const PORT = process.env.PORT || 4000;
 
 const db = require("./models");
 
@@ -67,6 +67,7 @@ app.put("/api/workouts/:id", (req, res) => {
 app.get("/api/workouts/range", (req, res) => {
   db.Workout.find({day: {$gte: moment().subtract(7,'d').format('YYYY-MM-DD')}})
     .then((dbWorkout) => {
+      
       res.json(dbWorkout);
     })
     .catch((err) => {

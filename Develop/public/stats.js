@@ -64,20 +64,14 @@ function populateChart(data) {
   }));
   
   document.getElementById("weightTotal").innerHTML = `Total Poundage: ${sum2} pounds`;
-  console.log(data.map(workout => workout.exercises))
+
+  //get all dates workout dates for display on charts
+  let dateArray = getDays(data).map(date => date.substring(0,10));
 
   let lineChart = new Chart(line, {
     type: "line",
     data: {
-      labels: [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"
-      ],
+      labels: dateArray,
       datasets: [
         {
           label: "Workout Duration In Minutes",
@@ -117,15 +111,7 @@ function populateChart(data) {
   let barChart = new Chart(bar, {
     type: "bar",
     data: {
-      labels: [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ],
+      labels: dateArray,
       datasets: [
         {
           label: "Pounds",
@@ -175,7 +161,7 @@ function populateChart(data) {
         {
           label: "Excercises Performed",
           backgroundColor: colors,
-          data: durations
+          data: durationPerExercise(data)
         }
       ]
     },
@@ -195,7 +181,7 @@ function populateChart(data) {
         {
           label: "Excercises Performed",
           backgroundColor: colors,
-          data: pounds
+          data: calculateWeightAll(data)
         }
       ]
     },
@@ -211,26 +197,74 @@ function populateChart(data) {
 
 function duration(data) {
   let durations = [];
+  let allWorkouts = [];
+
+  //function to remove duplicate days
+
+  const arrayUnique = function (arr) {
+    return arr.filter(function(item, index){
+      return arr.indexOf(item) >= index;
+    });
+  };
+
+  //insanely over-complicated code to extract and sum duration for each day
 
   data.forEach(workout => {
-    workout.exercises.forEach(exercise => {
-      durations.push(exercise.duration);
-    });
+    let workoutSum = [];
+    let daySum = 0;
+    workoutSum.push(workout.day)
+    workout.exercises.forEach(exercise => daySum += exercise.duration);
+    workoutSum.push(daySum);
+    allWorkouts.push(workoutSum);
   });
+
+  let uniqueDays = arrayUnique(allWorkouts.map(workout => workout[0]));
+  
+  for(let j=0; j<uniqueDays.length; j++){
+    let daySum = 0;
+    (allWorkouts.filter(workout => workout[0] === uniqueDays[j])).forEach(wrk => daySum+=wrk[1]);
+    durations.push(daySum);
+  }
 
   return durations;
 }
 
 function calculateTotalWeight(data) {
-  let total = [];
+  let weights = [];
+  let allWorkouts = [];
+
+  //function to remove duplicate days
+
+  const arrayUnique = function (arr) {
+    return arr.filter(function(item, index){
+      return arr.indexOf(item) >= index;
+    });
+  };
+
+  //insanely over-complicated code to extract and sum weight for each day
 
   data.forEach(workout => {
-    workout.exercises.forEach(exercise => {
-      total.push(exercise.weight);
-    });
+    let workoutSum = [];
+    let daySum = 0;
+    workoutSum.push(workout.day)
+    workout.exercises.forEach(exercise => daySum += exercise.weight);
+    workoutSum.push(daySum);
+    allWorkouts.push(workoutSum);
   });
 
-  return total;
+  let uniqueDays = arrayUnique(allWorkouts.map(workout => workout[0]));
+  
+  for(let j=0; j<uniqueDays.length; j++){
+    let daySum = 0;
+    (allWorkouts.filter(workout => workout[0] === uniqueDays[j])).forEach(wrk => {
+      if(wrk[1]){
+        daySum+=wrk[1]
+      }
+    });
+    weights.push(daySum);
+  }
+
+  return weights;
 }
 
 function workoutNames(data) {
@@ -244,3 +278,53 @@ function workoutNames(data) {
   
   return workouts;
 }
+
+function getDays(data){
+
+  let allWorkouts = [];
+  
+  const arrayUnique = function (arr) {
+    return arr.filter(function(item, index){
+      return arr.indexOf(item) >= index;
+    });
+  };
+
+  data.forEach(workout => {
+    let workoutSum = [];
+    let daySum = 0;
+    workoutSum.push(workout.day)
+    workout.exercises.forEach(exercise => daySum += exercise.duration);
+    workoutSum.push(daySum);
+    allWorkouts.push(workoutSum);
+  });
+
+  let uniqueDays = arrayUnique(allWorkouts.map(workout => workout[0]));
+
+  return uniqueDays;
+}
+
+function durationPerExercise(data) {
+  let durationPerExercise = [];
+
+  data.forEach(workout => {
+    workout.exercises.forEach(exercise => {
+      durationPerExercise.push(exercise.duration);
+    });
+  });
+
+  return durationPerExercise;
+}
+
+function calculateWeightAll(data) {
+  let total = [];
+
+  data.forEach(workout => {
+    workout.exercises.forEach(exercise => {
+      total.push(exercise.weight);
+    });
+  });
+
+  return total;
+}
+
+
