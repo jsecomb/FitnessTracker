@@ -247,7 +247,11 @@ function calculateTotalWeight(data) {
     let workoutSum = [];
     let daySum = 0;
     workoutSum.push(workout.day)
-    workout.exercises.forEach(exercise => daySum += exercise.weight);
+    workout.exercises.forEach(exercise => {
+      if (exercise.weight) {
+        daySum += exercise.weight
+      }
+    });
     workoutSum.push(daySum);
     allWorkouts.push(workoutSum);
   });
@@ -263,7 +267,6 @@ function calculateTotalWeight(data) {
     });
     weights.push(daySum);
   }
-
   return weights;
 }
 
