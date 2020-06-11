@@ -1,51 +1,79 @@
-# Unit 17 Nosql Homework: Workout Tracker
+# Homework-17 by Julian Secomb 
 
-For this assignment, you'll create a workout tracker. You have already been provided with the front end code in the `Develop` folder. This assignment will require you to create Mongo database with a Mongoose schema and handle routes with Express.
+[![HitCount](http://hits.dwyl.com/{JSecomb}/{Homework-17}.svg)](http://hits.dwyl.com/{JSecomb}/{Homework-17})
+![GitHub top language](https://img.shields.io/github/languages/top/JSecomb/Homework-17?style=flat-square)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/JSecomb/Homework-17?style=flat-square)
 
-## User Story
+## Description: 
 
-* As a user, I want to be able to view create and track daily workouts. I want to be able to log multiple exercises in a workout on a given day. I should also be able to track the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, I should be able to track my distance traveled.
+Full-stack fitness tracker App built with node.js utilizing MongoDB. The App allows the user to view, create and track daily workouts. The user inputs the name, type, weight, sets, reps, and duration of each exercise and adds that exercise to a given workout (a workout represents all the exercises done on a day). A stats page shows charts that break down the exercises done each day by duration and total pounds lifted (for resistance exercises). There is also a button that allows the user to clear the database.
 
-## Business Context
+---
 
-A consumer will reach their fitness goals quicker when they track their workout progress.
+## Table of Contents:
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Contributing](#contributing)
+* [Resources](#resources)
+* [Tests](#tests)
+* [Questions](#questions)
 
-## Acceptance Criteria
+---
 
-When the user loads the page, they should be given the option to create a new workout, or continue with their last workout.
+## Istallation: 
 
-The user should be able to:
+No installation required.
 
-  * Add exercises to a previous workout plan.
+---
 
-  * Add new exercises to a new workout plan.
+## Usage: 
 
-  * View the combined weight of multiple exercises on the `stats` page.
+Deployed app here: https://sheltered-bastion-09801.herokuapp.com/
 
-## Commit Early and Often
+* Press "New Workout" to start entering exercises into a new workout. 
+* Press "Continue Workout" to enter additional exercises to the current workout.
+* Press "Delete All Workouts" to clear the database.
+* Press "Fitness Tracker Dashboard" to view workout stats and tables.
 
-One of the most important skills to master as a web developer is version control. Building the habit of committing via Git is important for two reasons:
+![Dashboard](https://i.imgur.com/23ZPSOc.png?1)
 
-1. Your commit history is a signal to employers that you are actively working on projects and learning new skills
+---
 
-2. Your commit history allows you to revert your code base in the event that you need to return to a previous state
+## License: 
 
-Follow these guidelines for committing:
+Please contact Julian Secomb (contact info below) regarding licensing.
 
-* Make single purpose commits for related changes to ensure a clean, manageable history. If you are fixing two issues, make two commits
+Copyright © 2020 Julian Secomb
 
-* Write descriptive, meaningful commit messages so that you and anyone else looking at your repository can easily understand its history
+---
 
-* Don't commit half done work, for the sake of your collaborators (and your future self!)
+## Contributing:
 
-* Test your application before you commit to ensure functionality at every step in the development process
+Please contact Julian Secomb (contact info below) regarding contributions.
 
-We would like you to have well over 200 commits by graduation, so commit early and often!
+---
 
-## Submission on BCS
+## Resources:
 
-You are required to submit the following:
+This app was built in javascript using Node.js and MongoDB. 
 
-* The URL to the deployed application
+The following NPM packages were used:
+* Express
+* Mongoose
+* Path
+* Moment
 
-* The URL to the Github repository
+---
+
+## Tests:
+
+No unit tests performed. Functionality was tested by adding workouts and verifying that they show up correctly in API/Workouts and that the stats page properly displays date, weight and duration values.
+
+---
+
+## Questions:
+
+If you have any questions, please contact Julian Secomb at hoodooprojects@gmail.com;
+
+<img src="https://avatars3.githubusercontent.com/u/59972103?v=4" alt="JSecomb"/>
