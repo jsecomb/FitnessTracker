@@ -1,8 +1,8 @@
-# Homework-17 by Julian Secomb 
+# FitnessTracker by Julian Secomb 
 
-[![HitCount](http://hits.dwyl.com/{JSecomb}/{Homework-17}.svg)](http://hits.dwyl.com/{JSecomb}/{Homework-17})
-![GitHub top language](https://img.shields.io/github/languages/top/JSecomb/Homework-17?style=flat-square)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/JSecomb/Homework-17?style=flat-square)
+[![HitCount](http://hits.dwyl.com/{JSecomb}/{FitnessTracker}.svg)](http://hits.dwyl.com/{JSecomb}/{FitnessTracker})
+![GitHub top language](https://img.shields.io/github/languages/top/JSecomb/FitnessTracker?style=flat-square)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/JSecomb/FitnessTracker?style=flat-square)
 
 ## Description: 
 
